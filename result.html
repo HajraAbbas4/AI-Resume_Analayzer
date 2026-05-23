@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Result</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+<section class="result-section">
+
+    <div class="container-main">
+
+        <h1 class="section-title">
+            Resume Analysis Result
+        </h1>
+
+        <br>
+
+        <div class="glass-card">
+
+            <h2>Match Score</h2>
+
+            <h1 style="color:#6ee78c;">
+                {{ match.score }}%
+            </h1>
+
+            <p>{{ match.grade }}</p>
+
+            <br>
+
+            <h3>Matched Skills</h3>
+
+            {% for skill in match.matched %}
+                <span class="skill-badge badge-matched">
+                    {{ skill }}
+                </span>
+            {% endfor %}
+
+            <br><br>
+
+            <h3>Missing Skills</h3>
+
+            {% for skill in match.missing %}
+                <span class="skill-badge badge-missing">
+                    {{ skill }}
+                </span>
+            {% endfor %}
+
+            <br><br>
+
+            <h3>Suggestions</h3>
+
+            {% for suggestion in suggestions %}
+                <div class="suggestion-item">
+                    <div>
+                        <strong>{{ suggestion.title }}</strong>
+                        <p>{{ suggestion.text }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+
+            <br>
+
+            <a href="/" class="btn-outline-custom">
+                Go Back
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>
